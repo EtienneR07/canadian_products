@@ -1,33 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react';
 import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { authService } from './api/auth.service';
+import Login from './components/login/Login';
+import Dashboard from './components/dashboard/Dashboard';
+import Preferences from './components/preferences/Preferences';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [token, setToken] = useState<string | undefined>(undefined);
 
+  useEffect(() => {
+    const accessToken = authService.getAccessToken();
+    if (accessToken) {
+      setToken(accessToken);
+    }
+  }, []);
+  
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
+  
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="wrapper">
+      <h1>Application</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />}/>
+          <Route path="/preferences" element={<Preferences />}/>
+        </Routes>
+      </BrowserRouter>
+    </div>
     </>
   )
 }
