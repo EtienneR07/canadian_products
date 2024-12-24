@@ -15,16 +15,7 @@ const Sidenav: React.FC<SidenavProps> = ({ open, setOpen }) => {
   return (
     <React.Fragment>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 0.5,
-            ml: 'auto',
-            mt: 1,
-            mr: 2,
-          }}
-        >
+        <Box className="flex items-center gap-2 ml-auto mt-1 mr-2">
           <Typography
             component="label"
             htmlFor="close-icon"

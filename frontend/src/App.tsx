@@ -1,7 +1,6 @@
 import './App.css';
-import { Box, CssBaseline } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import ButtonAppBar from './components/app-bar/AppBar';
-import Sidenav from './components/side-nav/Sidenav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Recipes from './components/recipes/Recipes';
 
