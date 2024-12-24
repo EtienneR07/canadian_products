@@ -24,10 +24,15 @@ class ApiClient {
             async (error) => {
                 if (error.response?.status === 401) {
                     const refreshToken = Cookies.get('refreshToken');
+
                     if (!refreshToken) return Promise.reject(error);
 
                     const { accessToken, refreshToken: newRefreshToken } = await this.refreshToken(refreshToken);
+
                     error.config.headers['Authorization'] = `Bearer ${accessToken}`;
+
+                    Cookies.set('refreshToken', newRefreshToken, { expires: 30, path: '/', secure: true, sameSite: 'Strict' });
+
                     return axios(error.config);
                 }
                 return Promise.reject(error);

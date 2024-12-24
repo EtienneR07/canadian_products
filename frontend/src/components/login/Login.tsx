@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { authService } from "../../api/auth.service";
 import { Button, Input, InputLabel } from "@mui/material";
-import Cookies from 'js-cookie';
 
 interface LoginProps {
     setToken: Dispatch<SetStateAction<string | undefined>>;

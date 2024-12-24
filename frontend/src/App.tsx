@@ -1,38 +1,39 @@
-import { useEffect, useState } from 'react';
-import './App.css'
+import './App.css';
+import { Box, CssBaseline } from '@mui/material';
+import ButtonAppBar from './components/app-bar/AppBar';
+import Sidenav from './components/side-nav/Sidenav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { authService } from './api/auth.service';
-import Login from './components/login/Login';
-import Dashboard from './components/dashboard/Dashboard';
-import Preferences from './components/preferences/Preferences';
+import Recipes from './components/recipes/Recipes';
 
 function App() {
-  const [token, setToken] = useState<string | undefined>(undefined);
+  //   const [token, setToken] = useState<string | undefined>(undefined);
+  //   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const accessToken = authService.getAccessToken();
-    if (accessToken) {
-      setToken(accessToken);
-    }
-  }, []);
-  
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
-  
+  //   useEffect(() => {
+  //   const accessToken = authService.getAccessToken();
+  //   if (accessToken) {
+  //     setToken(accessToken);
+  //   }
+  //   setLoading(false);
+  // }, []);
+
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  //   if(!token) {
+  //     return <Login setToken={setToken} />
+  //   }
+
   return (
-    <>
-    <div className="wrapper">
-      <h1>Application</h1>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />}/>
-          <Route path="/preferences" element={<Preferences />}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
-    </>
-  )
+    <BrowserRouter>
+      <CssBaseline />
+      <ButtonAppBar />
+      <Routes>
+        <Route path="/recipes" element={<Recipes />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
