@@ -1,8 +1,7 @@
 import './App.css';
-import { CssBaseline } from '@mui/material';
-import ButtonAppBar from './components/app-bar/AppBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Recipes from './components/recipes/Recipes';
+import AppFooterBar from './components/footer-bar/AppFooterBar';
 
 function App() {
   //   const [token, setToken] = useState<string | undefined>(undefined);
@@ -26,8 +25,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <CssBaseline />
-      <ButtonAppBar />
+      <AppFooterBar />
       <Routes>
         <Route path="/recipes" element={<Recipes />} />
       </Routes>
