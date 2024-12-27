@@ -1,14 +1,15 @@
 import { Box, IconButton, IconProps, Typography } from '@mui/material';
 import React, { ReactElement } from 'react';
 
-interface RIconButtonProps {
+interface ButtonIconProps {
   text: string;
   icon: ReactElement<IconProps>;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const RIconButton: React.FC<RIconButtonProps> = ({ text, icon }) => {
+const ButtonIcon: React.FC<ButtonIconProps> = ({ text, icon, onClick }) => {
   return (
-    <IconButton color="inherit">
+    <IconButton color="inherit" onClick={onClick}>
       <Box className="flex flex-col items-center">
         {icon}
         <Typography>{text}</Typography>
@@ -17,4 +18,4 @@ const RIconButton: React.FC<RIconButtonProps> = ({ text, icon }) => {
   );
 };
 
-export default RIconButton;
+export default ButtonIcon;

@@ -1,7 +1,10 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Recipes from './components/recipes/Recipes';
-import AppFooterBar from './components/footer-bar/AppFooterBar';
+import AppFooterBar from './components/bottom-nav/BottomNav';
+import Home from './components/home/Home';
+import Parameters from './components/parameters/Parameters';
+import RecipeEditor from './components/recipe-editor/RecipeEditor';
 
 function App() {
   //   const [token, setToken] = useState<string | undefined>(undefined);
@@ -25,9 +28,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppFooterBar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
+        <Route path="/parameters" element={<Parameters />} />
+        <Route path="/recipes/edit" element={<RecipeEditor />} />
       </Routes>
     </BrowserRouter>
   );
