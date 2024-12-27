@@ -12,6 +12,5 @@ import { RecipesModule } from './recipes/recipes.module';
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGO_URI)],
   providers: [],
-  controllers: [RecipesController],
 })
 export class AppModule { }
