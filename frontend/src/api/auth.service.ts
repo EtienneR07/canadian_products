@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { apiClient } from './apiClient';
+import { apiClient } from './api.client';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
