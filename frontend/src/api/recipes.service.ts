@@ -1,10 +1,10 @@
-import axios from 'axios';
-
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+import { apiClient } from "./api.client";
+import { RecipeCreateDto } from "./dtos/recipe-create.dto";
+import { RecipeDto } from "./dtos/recipe.dto";
 
 class RecipesService {
-    public async create() {
-        const response = await axios.post(`${API_BASE_URL}/recipes`);
+    public async create(dto: RecipeCreateDto) {
+        return await apiClient.post<RecipeDto, RecipeCreateDto>("recipes", dto);
     }
 }
 
