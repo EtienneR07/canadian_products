@@ -9,7 +9,7 @@ import { CreateRecipeDto } from './create-recipe.dto';
 export class RecipesService {
     constructor(@InjectModel(Recipe.name) private model: Model<Recipe>) { }
 
-    async create(dto: CreateRecipeDto): Promise<Recipe> {
+    async create(dto: CreateRecipeDto): Promise<RecipeDocument> {
         const createdRecipe = new this.model(dto);
 
         return createdRecipe.save();

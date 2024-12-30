@@ -1,6 +1,7 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { RecipesService } from './recipes.service';
 import { RecipeDto } from './recipe.dto';
+import { CreateRecipeDto } from './create-recipe.dto';
 
 @Controller('recipes')
 export class RecipesController {
@@ -9,6 +10,13 @@ export class RecipesController {
     @Get(':id')
     async findOne(@Param('id') id: string): Promise<RecipeDto> {
         var recipe = await this.recipeService.get(id);
+
+        return RecipeDto.FromSchema(recipe);
+    }
+
+    @Post()
+    async create(@Body() createRecipeDto: CreateRecipeDto): Promise<RecipeDto> {
+        const recipe = await this.recipeService.create(createRecipeDto);
 
         return RecipeDto.FromSchema(recipe);
     }
