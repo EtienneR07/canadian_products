@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
-import { Ingredient } from './ingredient.schema';
+import { Document } from 'mongoose';
+import { RecipeIngredient } from './ingredient.schema';
+import { RecipeInstruction } from './recipe.instruction.schema';
 
 export type RecipeDocument = Recipe & Document;
 
@@ -8,6 +9,9 @@ export type RecipeDocument = Recipe & Document;
 export class Recipe {
     @Prop({ required: true })
     name: string;
+
+    @Prop()
+    source: string;
 
     @Prop()
     servingSize: number;
@@ -18,8 +22,11 @@ export class Recipe {
     @Prop()
     cookingTimeSeconds: number;
 
-    @Prop([Ingredient])
-    Ingredients: Ingredient[];
+    @Prop([RecipeIngredient])
+    Ingredients: RecipeIngredient[];
+
+    @Prop([RecipeInstruction])
+    Instructions: RecipeInstruction[];
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

@@ -2,8 +2,8 @@
 import { Model } from 'mongoose';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Recipe, RecipeDocument } from 'src/recipes/recipe.schema';
-import { CreateRecipeDto } from './create-recipe.dto';
+import { CreateRecipeDto } from './dtos/create-recipe.dto';
+import { Recipe, RecipeDocument } from './schemas/recipe.schema';
 
 @Injectable()
 export class RecipesService {

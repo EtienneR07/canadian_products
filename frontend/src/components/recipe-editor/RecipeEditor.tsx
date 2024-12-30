@@ -125,47 +125,39 @@ const RecipeEditor: React.FC = () => {
 
       <Typography variant="h6">Ingredients</Typography>
       {formData.ingredients.map((ingredient, index) => (
-        <Grid container spacing={2} alignItems="center" key={index}>
-          <Grid item xs={4}>
-            <TextField
-              label="Ingredient Name"
-              name="name"
-              value={ingredient.name}
-              onChange={(e) => handleChange(e, index)}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              label="Weight (g)"
-              name="weight"
-              type="number"
-              value={ingredient.weight || ''}
-              onChange={(e) => handleChange(e, index)}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              label="Volume (ml)"
-              name="volume"
-              type="number"
-              value={ingredient.volume || ''}
-              onChange={(e) => handleChange(e, index)}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={2}>
-            <IconButton
-              color="error"
-              onClick={() => removeIngredient(index)}
-              disabled={formData.ingredients.length <= 1}
-            >
-              <RemoveCircleOutlineIcon />
-            </IconButton>
-          </Grid>
-        </Grid>
+        <Box>
+          <TextField
+            label="Ingredient Name"
+            name="name"
+            value={ingredient.name}
+            onChange={(e) => handleChange(e, index)}
+            fullWidth
+            required
+          />
+          <TextField
+            label="Weight (g)"
+            name="weight"
+            type="number"
+            value={ingredient.weight || ''}
+            onChange={(e) => handleChange(e, index)}
+            fullWidth
+          />
+          <TextField
+            label="Volume (ml)"
+            name="volume"
+            type="number"
+            value={ingredient.volume || ''}
+            onChange={(e) => handleChange(e, index)}
+            fullWidth
+          />
+          <IconButton
+            color="error"
+            onClick={() => removeIngredient(index)}
+            disabled={formData.ingredients.length <= 1}
+          >
+            <RemoveCircleOutlineIcon />
+          </IconButton>
+        </Box>
       ))}
 
       <Button

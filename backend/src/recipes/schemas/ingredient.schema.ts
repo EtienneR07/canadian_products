@@ -1,8 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
 
 @Schema()
-export class Ingredient {
+export class RecipeIngredient {
     @Prop({ required: true })
     name: string;
 
@@ -11,6 +10,12 @@ export class Ingredient {
 
     @Prop()
     volume?: number; // in ml
+
+    @Prop()
+    wholeAmount?: number;
+
+    @Prop()
+    preparation: string;
 }
 
-export const IngredientSchema = SchemaFactory.createForClass(Ingredient);
+export const RecipeIngredientSchema = SchemaFactory.createForClass(RecipeIngredient);
